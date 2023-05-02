@@ -35,8 +35,10 @@ class FirstFragment : Fragment() {
     private fun initClickers() {
         with(binding) {
             calculateBtn.setOnClickListener {
-
+                viewModel.liveLove(firstNameEd.text.toString(), secondNameEd.text.toString())
+                    .observe(viewLifecycleOwner) { loveModel ->
+                        Log.e("ololo", "initClickers: ${loveModel}")
+                    }
             }
         }
-    }
-}
+    }}
