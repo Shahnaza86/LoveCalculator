@@ -6,16 +6,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.lovecalculator.App
 import com.example.lovecalculator.LoveViewModel
 import com.example.lovecalculator.R
 import com.example.lovecalculator.databinding.FragmentFirstBinding
-import retrofit2.Call
-import retrofit2.Response
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FirstFragment : Fragment() {
     lateinit var binding: FragmentFirstBinding
     val viewModel: LoveViewModel by viewModels()
@@ -34,9 +33,13 @@ class FirstFragment : Fragment() {
 
     private fun initClickers() {
         with(binding) {
+            btnHistory.setOnClickListener {
+                findNavController().navigate(R.id.historyFragment)
+            }
             calculateBtn.setOnClickListener {
                 viewModel.liveLove(firstNameEd.text.toString(), secondNameEd.text.toString())
                     .observe(viewLifecycleOwner) { loveModel ->
+                        App.appDatabase.getDao().insert(loveModel)
                         Log.e("ololo", "initClickers: ${loveModel}")
                     }
             }

@@ -27,6 +27,15 @@
         android:text="calculate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#3F51B5"
+        android:text="History"
+        android:textAllCaps="false"
+        app:cornerRadius="20dp" />
 
 </LinearLayout>

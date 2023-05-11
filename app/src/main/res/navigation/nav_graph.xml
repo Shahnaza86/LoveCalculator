@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/firstFragment">
+    app:startDestination="@id/onBoardFragment">
 
     <fragment
         android:id="@+id/firstFragment"
@@ -15,4 +15,16 @@
         android:name="com.example.lovecalculator.remote.SecondFragment"
         android:label="fragment_second"
         tools:layout="@layout/fragment_second" />
+
+    <fragment
+        android:id="@+id/onBoardFragment"
+        android:name="com.example.lovecalculator.on_board.OnBoardFragment"
+        android:label="OnBoardFragment"
+        tools:layout="@layout/fragment_on_board"/>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.lovecalculator.remote.HistoryFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+
 </navigation>

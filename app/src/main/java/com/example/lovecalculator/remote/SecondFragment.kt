@@ -1,5 +1,6 @@
 package com.example.lovecalculator.remote
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,9 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lovecalculator.databinding.FragmentSecondBinding
 import com.example.lovecalculator.remote.LoveModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SecondFragment : Fragment() {
-    lateinit var binding: FragmentSecondBinding
+   private lateinit var binding: FragmentSecondBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,14 +34,16 @@ class SecondFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun result() {
-        with(binding) {
-            val result = arguments?.getSerializable("KEY") as LoveModel
+        binding.apply {
+            val result = arguments?.getSerializable("result") as LoveModel
             tvYou.text = result.firstName
             tvMe.text = result.secondName
-            tvPercent.text = result.percentage
+            tvPercent.text = result.percentage + "%"
             tvResult.text = result.result
         }
     }
-}
+    }
+
 
